@@ -1,0 +1,32 @@
+﻿<Window x:Class="Ht.SettingsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ht="clr-namespace:Ht"
+        mc:Ignorable="d"
+        Title="Settings" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <Window.Resources>
+        <ControlTemplate x:Key="optionStyle" TargetType="{x:Type Button}">
+            <Rectangle Name="optionTriggers" Fill="{TemplateBinding Background}" Height="100" Width="100" 
+                       Margin="5" Opacity="0.5">
+            </Rectangle>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="optionTriggers" Property="Opacity" Value="0.7" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="optionTriggers" 
+                            Property="Opacity" Value="1" />
+                </Trigger>
+
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>      
+    <StackPanel Margin="10">
+        <TextBlock TextWrapping="Wrap">Select piece color:</TextBlock>
+        <Button Template="{StaticResource optionStyle}" Background="DarkGray" Click="ColorButton_Click" />
+        <Button Template="{StaticResource optionStyle}" Background="DarkRed" Click="ColorButton_Click" />
+        <Button Style="{StaticResource buttonStyle}" Click="CancelButton_Click">Cancel</Button>
+    </StackPanel>
+</Window>

@@ -1,0 +1,58 @@
+﻿<Window x:Class="Ht.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ht="clr-namespace:Ht"
+        mc:Ignorable="d"
+        Title="MainWindow" MinHeight="300" MinWidth="300" x:Name="window"
+        SizeToContent="Width" Background="Beige" MouseUp="window_MouseUp">
+    <Window.CommandBindings>
+        <CommandBinding Command="ht:GameCommands.Insert"
+                        Executed="InsertCommand_Executed"
+                        CanExecute="InsertCommand_CanExecute" />
+        <CommandBinding Command="ht:GameCommands.Remove"
+                        Executed="RemoveCommand_Executed"
+                        CanExecute="RemoveCommand_CanExecute"  />
+        <CommandBinding Command="ht:GameCommands.MovePiece"
+                        Executed="MovePieceCommand_Executed"
+                        CanExecute="MovePieceCommand_CanExecute" />
+        <CommandBinding Command="ht:GameCommands.Settings"
+                        Executed="Settings_Executed" />
+        <CommandBinding Command="ApplicationCommands.Close"
+                        Executed="CommandClose_Executed" />
+    </Window.CommandBindings>
+    <DockPanel>
+        <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0.5">
+            <Menu>
+                <MenuItem Header="_File">
+                    <MenuItem Command="ApplicationCommands.Close" />
+                </MenuItem>
+                <MenuItem Header="_Game">
+                    <MenuItem Command="ht:GameCommands.Insert" Header="_Insert Piece" />
+                    <MenuItem Command="ht:GameCommands.Remove" Header="_Remove Piece" />
+                    <MenuItem Command="ht:GameCommands.MovePiece" Header="_Move Piece" />
+                </MenuItem>
+                <MenuItem Header="_Tools">
+                    <MenuItem Command="ht:GameCommands.Settings" Header="_Settings..." />
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Click="AboutItem_Click" Header="_About" />
+                    <Hyperlink NavigateUri="http://users.jyu.fi/~hlaukkan/wwwGKO/help/index.html" 
+                               RequestNavigate="Hyperlink_RequestNavigate">Help</Hyperlink>
+                </MenuItem>
+            </Menu>
+        </Border>
+        <StackPanel DockPanel.Dock="Bottom" >
+            <StackPanel Orientation="Horizontal" Background="AliceBlue" x:Name="buttons" >
+                <Button Style="{StaticResource buttonStyle}" Command="ht:GameCommands.Insert" 
+                        Content="_Insert Piece" x:Name="insertPieceButton"/>
+                <Button Style="{StaticResource buttonStyle}" Command="ht:GameCommands.Remove" 
+                        Content="_Remove Piece" FocusManager.IsFocusScope="True" />
+                <Button Style="{StaticResource buttonStyle}" Command="ht:GameCommands.MovePiece" 
+                        Content="_Move Piece" FocusManager.IsFocusScope="True" x:Name="movePieceButton" />
+            </StackPanel>
+        </StackPanel>
+        <ht:Gameboard x:Name="gameboard" />
+    </DockPanel>
+</Window>

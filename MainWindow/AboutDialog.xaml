@@ -1,0 +1,25 @@
+﻿<Window x:Class="Ht.AboutDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ht="clr-namespace:Ht"
+        mc:Ignorable="d"
+        Title="About" ResizeMode="NoResize" VerticalAlignment="Top"
+        SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="3"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        </Style>
+    </Window.Resources>
+    <StackPanel Height="Auto" Width="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">
+        <TextBlock>Mylly</TextBlock>
+        <TextBlock>Tekijä: Hannes Laukkanen</TextBlock>
+        <TextBlock>Versio: 1.0.0.0</TextBlock>
+        <TextBlock>Päiväys: 18.8.2016</TextBlock>
+        <TextBlock>Kuvaus:</TextBlock>
+        <TextBlock TextWrapping="Wrap" Width="150">Graafisten käyttöliittymien ohjelmointi -opintojakson harjoitustyö.</TextBlock>
+        <Button Style="{StaticResource buttonStyle}" Click="Button_Click">Ok</Button>
+    </StackPanel>
+</Window>
